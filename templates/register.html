@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Emergency HealthCare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Blood Group:</label>
+        <input type="text" name="blood_group" required>
+
+        <label>Date of Birth:</label>
+        <input type="date" name="date_of_birth" required>
+
+        <label>Primary Guardian:</label>
+        <input type="text" name="primary_guardian" required>
+
+        <label>Primary Guardian Contact:</label>
+        <input type="text" name="primary_guardian_contact" required>
+
+        <label>Family Doctor (Optional):</label>
+        <input type="text" name="family_doctor">
+
+        <label>Family Doctor Contact (Optional):</label>
+        <input type="text" name="family_doctor_contact">
+
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+</body>
+</html>
