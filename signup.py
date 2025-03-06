@@ -1,29 +1,8 @@
 from flask import Blueprint, request, redirect, url_for, render_template, flash
-from flask_bcrypt import Bcrypt
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from models import User, db, bcrypt  # Import from a central models file
 
 signup_bp = Blueprint('signup', __name__)
-
-# Initialize extensions (make sure they're initialized in your main app)
-db = SQLAlchemy()
-bcrypt = Bcrypt()
-
-# User Model
-class User(db.Model):
-    userid = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(255), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-    name = db.Column(db.String(255), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
-    blood_group = db.Column(db.String(5), nullable=False)
-    date_of_birth = db.Column(db.Date, nullable=False)
-    primary_guardian = db.Column(db.String(255), nullable=False)
-    primary_guardian_contact = db.Column(db.String(15), nullable=False)
-    family_doctor = db.Column(db.String(255))
-    family_doctor_contact = db.Column(db.String(15))
-    created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
 
 # Signup Page Route (GET)
 @signup_bp.route('/signup', methods=['GET'])
@@ -49,7 +28,7 @@ def signup_post():
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         flash('Error: Email already registered. Please use another email.', 'danger')
-        return redirect(url_for('signup.signup'))
+        return redirect(url_for('signup.signup'))  # Keep as is since we're in the signup blueprint
 
     # Hash the password
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
@@ -74,7 +53,7 @@ def signup_post():
         db.session.add(new_user)
         db.session.commit()
         flash('Registration successful! You can now log in.', 'success')
-        return redirect(url_for('login.login'))
+        return redirect(url_for('auth.login'))  # Fixed URL pattern
     except Exception as e:
         db.session.rollback()
         flash('Error: Registration failed. Please try again.', 'danger')
