@@ -1,9 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, render_template, flash, session
-from flask_bcrypt import Bcrypt
-from flask_sqlalchemy import SQLAlchemy
-from models import User, db, bcrypt  # Import from a central models file
+from models import User, bcrypt  # Import from central models file
 
-login_bp = Blueprint('auth', __name__)  # Changed blueprint name to 'auth'
+login_bp = Blueprint('login_bp', __name__)
 
 # Login Page Route (GET)
 @login_bp.route('/login', methods=['GET'])
@@ -22,14 +20,7 @@ def login_post():
     if user and bcrypt.check_password_hash(user.password, password):
         session['user_id'] = user.userid  # Store user ID in session
         flash('Login successful!', 'success')
-        return redirect(url_for('dashboard'))  # Fixed redirect
+        return redirect(url_for('index'))
     else:
         flash('Invalid email or password. Please try again.', 'danger')
-        return redirect(url_for('auth.login'))  # Fixed URL pattern
-
-# This can be removed since there's already a logout route in Front.py
-# @login_bp.route('/logout')
-# def logout():
-#     session.pop('user_id', None)
-#     flash('You have been logged out.', 'info')
-#     return redirect(url_for('auth.login'))
+        return redirect(url_for('login_bp.login'))

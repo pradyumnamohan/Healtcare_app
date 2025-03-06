@@ -1,53 +1,190 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Emergency HealthCare</title>
-    <link rel="stylesheet" href="..\static\css\styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manuale:wght@700&display=swap');
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #d5ecfc;
+            padding: 40px 0;
+        }
+        .signup-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .signup-title {
+            color: #002147;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Manuale', serif;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #002147;
+            font-weight: bold;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #002147;
+            outline: none;
+        }
+        .signup-btn {
+            background-color: #002147;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            grid-column: 1 / -1;
+        }
+        .signup-btn:hover {
+            background-color: #003166;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link a {
+            color: #002147;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: #002147;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .alert-error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .alert-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+    </style>
 </head>
 <body>
-    <h2>Register</h2>
-    <form method="POST">
-        <label>Email:</label>
-        <input type="email" name="email" required>
-
-        <label>Password:</label>
-        <input type="password" name="password" required>
-
-        <label>Name:</label>
-        <input type="text" name="name" required>
-
-        <label>Age:</label>
-        <input type="number" name="age" required>
-
-        <label>Gender:</label>
-        <select name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-
-        <label>Blood Group:</label>
-        <input type="text" name="blood_group" required>
-
-        <label>Date of Birth:</label>
-        <input type="date" name="date_of_birth" required>
-
-        <label>Primary Guardian:</label>
-        <input type="text" name="primary_guardian" required>
-
-        <label>Primary Guardian Contact:</label>
-        <input type="text" name="primary_guardian_contact" required>
-
-        <label>Family Doctor (Optional):</label>
-        <input type="text" name="family_doctor">
-
-        <label>Family Doctor Contact (Optional):</label>
-        <input type="text" name="family_doctor_contact">
-
-        <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Login</a></p>
+    <div class="signup-container">
+        <button class="back-btn" onclick="window.location.href='/'">← Back</button>
+        <h2 class="signup-title">Register</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('signup_bp.signup_post') }}" method="POST" class="form-grid">
+            <div class="input-group">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label>Name:</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="input-group">
+                <label>Age:</label>
+                <input type="number" name="age" required>
+            </div>
+            <div class="input-group">
+                <label>Gender:</label>
+                <select name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Blood Group:</label>
+                <input type="text" name="blood_group" required>
+            </div>
+            <div class="input-group">
+                <label>Date of Birth:</label>
+                <input type="date" name="date_of_birth" required>
+            </div>
+            <div class="input-group">
+                <label>Primary Guardian:</label>
+                <input type="text" name="primary_guardian" required>
+            </div>
+            <div class="input-group">
+                <label>Primary Guardian Contact:</label>
+                <input type="text" name="primary_guardian_contact" required>
+            </div>
+            <div class="input-group">
+                <label>Family Doctor:</label>
+                <input type="text" name="family_doctor">
+            </div>
+            <div class="input-group">
+                <label>Family Doctor Contact:</label>
+                <input type="text" name="family_doctor_contact">
+            </div>
+            <button type="submit" class="signup-btn">Register</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="{{ url_for('login_bp.login') }}">Login</a></p>
+        </div>
+    </div>
 </body>
 </html>

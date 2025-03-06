@@ -7,9 +7,31 @@
     <link rel="stylesheet" href="..\static\css\styles.css">
 </head>
 <body>
-    <h1>Welcome to Emergency HealthCare</h1>
+    <h1>Welcome t<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Home - Emergency HealthCare</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        </head>
+        <body>
+            <h1>Welcome to Emergency HealthCare</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <nav>
+                <a href="{{ url_for('signup_bp.signup') }}">Register</a>
+                <a href="{{ url_for('login_bp.login') }}">Login</a>
+            </nav>
+        </body>
+        </html>o Emergency HealthCare</h1>
     <nav>
-        <a href="register.html">Register</a>
+        <a href="signup.html">Register</a>
         <a href="login.html">Login</a>
     </nav>
 </body>

@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Emergency HealthCare</title>
-    <link rel="stylesheet" href="..\static\css\styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <h1>Welcome to Your Dashboard</h1>
-    <p>This is your emergency healthcare dashboard.</p>
+    <h1>Dashboard</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="dashboard-content">
+        <p>Welcome to your Emergency HealthCare Dashboard!</p>
+        <!-- Add your dashboard content here -->
+    </div>
+    
     <nav>
         <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
