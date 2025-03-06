@@ -3,36 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Emergency HealthCare</title>
-    <link rel="stylesheet" href="..\static\css\styles.css">
+    <title>Emergency Healthcare</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manuale:wght@700&display=swap');
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #d5ecfc;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #002147;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1002;
+        }
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .emergency-btn {
+            background-color: yellow;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .dots-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 10px;
+            position: relative;
+            z-index: 1002;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 80vh;
+            padding-top: 40px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Manuale', serif;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 20px;
+            width: 60%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+        .mic-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .send-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .emergency-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            width: 300px;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .more-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            animation: slideIn 0.3s ease-in-out;
+            padding-top: 80px;
+        }
+        .more-menu button {
+            display: block;
+            width: 100%;
+            padding: 20px 25px;
+            border: none;
+            background: none;
+            font-size: 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #002147;
+        }
+        .more-menu button:hover {
+            background-color: #f0f0f0;
+        }
+        .response-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            display: none;
+        }
+        .response-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #002147;
+            font-size: 18px;
+        }
+        .response-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .summary-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            color: #002147;
+            font-size: 16px;
+        }
+        .summary-content {
+            font-style: italic;
+            color: #555;
+        }
+        .loading {
+            display: none;
+            margin: 20px auto;
+        }
+        .loading:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid #002147;
+            border-color: #002147 transparent #002147 transparent;
+            animation: loading 1.2s linear infinite;
+        }
+        @keyframes loading {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome t<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Home - Emergency HealthCare</title>
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-        </head>
-        <body>
-            <h1>Welcome to Emergency HealthCare</h1>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            <nav>
-                <a href="{{ url_for('signup_bp.signup') }}">Register</a>
-                <a href="{{ url_for('login_bp.login') }}">Login</a>
-            </nav>
-        </body>
-        </html>o Emergency HealthCare</h1>
-    <nav>
-        <a href="signup.html">Register</a>
-        <a href="login.html">Login</a>
-    </nav>
+    <div class="navbar">
+        <div class="left-section">
+            <div class="logo">L</div>
+            <button class="emergency-btn">Emergency</button>
+        </div>
+        <img src="{{ url_for('static', filename='more.png') }}" class="dots-icon" alt="Menu" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3206/3206294.png'">
+    </div>
+    <div class="container">
+        <div class="title">Healthcare App</div>
+        <div class="input-box">
+            <input type="text" id="symptomInput" placeholder="Enter your symptoms" />
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic">
+            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983788.png" class="send-icon" alt="Send" id="sendBtn">
+        </div>
+        
+        <div class="loading" id="loadingIndicator"></div>
+        
+        <div class="response-container" id="responseContainer">
+            <div class="response-title">First Aid Advice:</div>
+            <div class="response-content" id="responseContent"></div>
+            <div class="summary-title">Summary:</div>
+            <div class="summary-content" id="summaryContent"></div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="emergency-menu" id="emergencyMenu">
+        <h2>Emergency Services</h2>
+        <p><span>Press 1</span> for Ambulance 🚑🚑</p>
+        <p><span>Press 2</span> for Fire Department 🚒🚒</p>
+        <p><span>Press 3</span> for Police 🚓🚓</p>
+    </div>
+    
+    <div class="more-menu" id="moreMenu">
+        <button onclick="window.location.href='/'">Main Menu</button>
+        <button onclick="window.location.href='/auth/login'">Log In</button>
+        <button onclick="window.location.href='/auth/signup'">Sign Up</button>
+    </div>
+
+    <script>
+        document.querySelector('.dots-icon').addEventListener('click', function() {
+            const moreMenu = document.getElementById('moreMenu');
+            const overlay = document.getElementById('overlay');
+            if (moreMenu.style.display === 'block') {
+                moreMenu.style.display = 'none';
+                overlay.style.display = 'none';
+            } else {
+                moreMenu.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            const moreMenu = document.getElementById('moreMenu');
+            const emergencyMenu = document.getElementById('emergencyMenu');
+            moreMenu.style.display = 'none';
+            emergencyMenu.style.display = 'none';
+            this.style.display = 'none';
+        });
+
+        document.querySelector('.emergency-btn').addEventListener('click', function() {
+            const emergencyMenu = document.getElementById('emergencyMenu');
+            const overlay = document.getElementById('overlay');
+            emergencyMenu.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Send query to backend
+        function sendQuery() {
+            const queryText = document.getElementById('symptomInput').value.trim();
+            
+            if (!queryText) {
+                alert("Please enter your symptoms or question");
+                return;
+            }
+            
+            // Show loading indicator
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('responseContainer').style.display = 'none';
+            
+            fetch('/api/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    query: queryText
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading indicator
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                // Show response
+                document.getElementById('responseContent').textContent = data.response;
+                document.getElementById('summaryContent').textContent = data.summary;
+                document.getElementById('responseContainer').style.display = 'block';
+                
+                // Scroll to the response
+                document.getElementById('responseContainer').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loadingIndicator').style.display = 'none';
+                alert('An error occurred while processing your request.');
+            });
+        }
+        
+        // Event listeners for sending query
+        document.getElementById('sendBtn').addEventListener('click', sendQuery);
+        
+        document.getElementById('symptomInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendQuery();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            const emergencyMenu = document.getElementById("emergencyMenu");
+            const overlay = document.getElementById("overlay");
+            const moreMenu = document.getElementById("moreMenu");
+            
+            if (event.key === "Escape") {
+                if (emergencyMenu.style.display === "block") {
+                    emergencyMenu.style.display = "none";
+                    overlay.style.display = "none";
+                } else if (moreMenu.style.display === "block") {
+                    moreMenu.style.display = "none";
+                    overlay.style.display = "none";
+                } else {
+                    emergencyMenu.style.display = "block";
+                    overlay.style.display = "block";
+                }
+            } else if (emergencyMenu.style.display === "block") {
+                if (event.key === "1") {
+                    alert("Calling Ambulance...🚑🚑");
+                    window.location.href = "/emergency/ambulance";
+                } else if (event.key === "2") {
+                    alert("Calling Fire Department...🚒🚒");
+                    window.location.href = "/emergency/fire";
+                } else if (event.key === "3") {
+                    alert("Calling Police...🚓🚓");
+                    window.location.href = "/emergency/police";
+                }
+            }
+        });
+    </script>
 </body>
 </html>
