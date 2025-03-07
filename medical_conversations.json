@@ -178,5 +178,45 @@
         "query": "this is not",
         "response": "Okay, I understand you're not feeling well.  Can you tell me a little more about what's going on?  The more information you give me, the better I can advise you on what to do right now to help yourself feel more comfortable.",
         "summary": "Patient reported feeling unwell; physician requested further details for appropriate advice.\n"
+    },
+    {
+        "query": "do you have a mild headache",
+        "response": "Oh, a mild headache, huh?  That's pretty common.  Try resting in a quiet, dark room for a bit.  Maybe put a cool compress on your forehead.  Drink some water \u2013 dehydration can sometimes trigger headaches.  See if that helps. If it gets worse or doesn't improve after a couple of hours, you should definitely focus on getting some relief.",
+        "summary": "Mild headache? Rest, cool compress, and hydration are suggested.  If symptoms worsen or persist after two hours, seek further relief.\n"
+    },
+    {
+        "query": "i have a mild headache",
+        "response": "Oh, a mild headache, huh?  That's a common one.  Try to relax for a bit, maybe find a quiet, dark room.  A cool compress on your forehead might help too.  Drink some water \u2013 dehydration can sometimes trigger headaches.  See if that helps ease things. If it gets worse, or if it's accompanied by anything else like nausea, dizziness, or vision changes, you should seek professional attention right away.",
+        "summary": "Mild headache? Rest in a dark, cool room, hydrate, and apply a cool compress.  Seek medical help if it worsens or includes nausea, dizziness, or vision changes.\n"
+    },
+    {
+        "query": "my feet are swollen",
+        "response": "Oh dear, swollen feet can be quite uncomfortable.  Let's see what we can do to ease that for you right now.\n\nFirst, try elevating your feet above your heart.  Prop them up on some pillows while you relax.  Keeping them still will help reduce swelling.  Also, make sure you're drinking plenty of water, as dehydration can sometimes worsen swelling.  Avoid tight socks or shoes, as those can restrict circulation.\n\nIf the swelling is severe, painful, or accompanied by other symptoms like redness, warmth, or chest pain, you really need to focus on getting some rest and attending to this as soon as possible.  If it doesn't improve significantly after trying these things, it's a good idea to keep an eye on it and take the appropriate action.",
+        "summary": "Swollen feet can be relieved by elevating them, staying hydrated, and avoiding tight footwear.  Severe swelling, pain, or additional symptoms (redness, warmth, chest pain) require immediate medical attention.  If symptoms don't improve, seek medical advice.\n"
+    },
+    {
+        "query": "i have a mild headache",
+        "response": "Oh, a mild headache, huh?  That's understandable.  Try to find a quiet, dark place to rest for a little while.  Maybe put a cool cloth on your forehead.  Drink some water \u2013 dehydration can sometimes trigger headaches.  See how you feel after a bit of rest and hydration. If it doesn't improve or gets worse, it's best to seek professional advice as soon as possible.",
+        "summary": "Mild headache? Rest in a quiet, dark place, apply a cool compress, and drink water.  If symptoms worsen or don't improve, seek medical attention.\n"
+    },
+    {
+        "query": "I have my right feet swelling for the past two days",
+        "response": "Oh, that sounds uncomfortable.  Swelling in your foot for two days warrants a closer look.  In the meantime, try to keep your foot elevated as much as possible \u2013  maybe prop it up on a couple of pillows when you're sitting or lying down.  Avoid standing or walking around too much.  Keeping it cool with a cold compress (like a bag of frozen peas wrapped in a towel) for 20 minutes at a time, several times a day, might also help ease the swelling.  Drink plenty of fluids as well.  If the swelling gets significantly worse, or if you experience any pain, increased redness, or warmth in the area, you should seek further advice without delay.",
+        "summary": "Two days of right foot swelling warrants medical attention.  Until then, elevate the foot, apply cold compresses, stay hydrated, and limit activity.  Seek immediate medical advice if swelling worsens or pain/redness/warmth develops.\n"
+    },
+    {
+        "query": "i have a mild headache",
+        "response": "Oh, a headache, huh?  That's a common one.  Try to relax for a bit.  See if some quiet time and maybe a cool compress on your forehead helps.  Drink some water too; dehydration can sometimes trigger headaches.  If it doesn't start to feel better soon, or if it gets much worse, you might want to take something like ibuprofen (if you have some and it's safe for you to take), but remember I'm not a doctor, so just use your best judgement.",
+        "summary": "Mild headache? Try rest, cool compress, and water.  If no improvement or worsening, consider ibuprofen (if safe and appropriate), but seek medical advice if necessary.\n"
+    },
+    {
+        "query": "I have swelling in my feet",
+        "response": "Oh dear, swollen feet can be quite uncomfortable.  Let's see if we can get you some relief.  First, try elevating your feet above your heart \u2013 maybe prop them up on a couple of pillows while you're resting.  Keeping them still will help reduce swelling.  Also, make sure you're drinking plenty of water, as dehydration can actually worsen swelling.  Avoid tight clothing or shoes that might constrict your feet.\n\nIf the swelling is severe, painful, or accompanied by other symptoms like redness, warmth to the touch, or difficulty breathing, you should seek attention right away.  Otherwise, see how you feel after trying those things for a while.  Let me know if it doesn't improve.",
+        "summary": "Swollen feet can be relieved by elevating them, staying hydrated, and avoiding tight clothing.  Seek immediate medical attention if swelling is severe, painful, or accompanied by redness, warmth, or breathing difficulties.\n"
+    },
+    {
+        "query": "I have been feeling slight pain in my chest for the past two days",
+        "response": "Oh, that doesn't sound good.  Chest pain can be a bit worrying, so it's really important to take it easy.  For now, try to rest as much as possible and avoid any strenuous activity.  Drink plenty of fluids and see how you feel over the next little while. If the pain gets worse, or if you start feeling any other symptoms like shortness of breath, dizziness, or pain that radiates to your arm or jaw,  you should seek medical attention immediately. It's always better to get it checked out sooner rather than later, just to be on the safe side.",
+        "summary": "Chest pain warrants caution. Rest, hydration, and monitoring are advised.  Seek immediate medical attention if pain worsens or is accompanied by shortness of breath, dizziness, or radiating pain.\n"
     }
 ]
