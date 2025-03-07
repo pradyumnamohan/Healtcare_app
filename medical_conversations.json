@@ -53,5 +53,130 @@
         "query": "I have severe throat pain",
         "response": "Oh, that sounds really awful.  Severe throat pain can be pretty miserable.  First things first, try to stay hydrated.  Sipping on warm liquids like tea with honey (if you can tolerate it) or broth might help soothe it a bit.  Avoid anything acidic or too hot, as that will likely irritate it further.  Rest your voice as much as possible \u2013 no shouting or whispering.  If the pain is truly severe, or if you have difficulty breathing or swallowing, you should seek attention immediately.",
         "summary": "Severe throat pain can be treated with rest, hydration (warm liquids like tea with honey), and avoiding irritants.  However, if the pain is intense or accompanied by breathing or swallowing difficulties, immediate medical attention is necessary."
+    },
+    {
+        "query": "am I Losing My Mind",
+        "response": "Oh my goodness, that sounds really scary.  It's understandable that you'd be worried.  \n\nFirst, let's try to take some deep breaths. In through your nose, slowly, hold for a few seconds, and out through your mouth.  Let's do that a few times together.  (Pause for breaths).\n\nOkay, feeling a little calmer? Good.  Now,  can you tell me more about what's making you feel like you're losing your mind?  What exactly is happening? The more information you can give me, the better I can understand what's going on.  \n\nDepending on what you tell me, we might need to consider some things to help you feel more grounded right now. But it's really important that you get some professional support to help figure this out properly. Getting in to see someone as soon as possible is a good idea.",
+        "summary": "The response to the query \"Am I losing my mind?\" offers immediate reassurance and calming techniques (deep breathing).  It then encourages the person to describe their experiences to better understand the situation, emphasizing the need for professional help from a mental health professional as soon as possible."
+    },
+    {
+        "query": "i am feeling nauseous",
+        "response": "Oh no, feeling nauseous is never fun.  Let's see if we can get you a bit more comfortable.  First, try to sit or lie down in a position that feels most supportive. Avoid strong smells \u2013 things like perfume or cleaning products can make nausea worse.  \n\nTake slow, deep breaths.  Sometimes, just focusing on your breathing can help settle your stomach. Sip on some clear fluids like water or clear broth, just small sips at a time. Avoid anything sugary or greasy.  If you start vomiting, try to keep yourself hydrated, but don't force yourself to drink anything if it feels uncomfortable.\n\nIf this nausea is severe, lasts a long time, or is accompanied by other symptoms like a high fever, severe abdominal pain, or dizziness, you should seek further assistance as soon as possible.  Let's focus on getting you feeling a little better right now, though.  How are you feeling so far?",
+        "summary": "Feeling nauseous?  Try resting comfortably, avoiding strong smells, and taking slow breaths. Sip clear fluids like water or broth, avoiding sugary or greasy drinks.  If nausea is severe, prolonged, or accompanied by other symptoms (fever, abdominal pain, dizziness), seek immediate medical help. Otherwise, focus on resting and rehydration."
+    },
+    {
+        "query": "i have very bad period pain",
+        "response": "Oh no, I'm so sorry to hear you're having such bad period pain. That's really rough.  \n\nFirst things first, let's try to get you some comfort.  Lie down in a comfortable position \u2013 maybe with your knees bent.  A warm water bottle or heating pad on your lower abdomen might help ease the cramps.  Over-the-counter pain relievers like ibuprofen or naproxen can also help, but be sure to follow the dosage instructions on the packaging.  Try to stay hydrated by sipping on water or clear fluids.  Gentle stretches or walking around might also help, but only if you feel up to it.  If the pain is truly unbearable or doesn't improve after trying these things, you should seek further help as soon as possible.",
+        "summary": "The response offers comfort and advice for severe period pain, suggesting resting comfortably with a warm compress, taking over-the-counter pain relievers like ibuprofen or naproxen (following dosage instructions), staying hydrated, and possibly gentle movement.  However, it emphasizes seeking further medical help if the pain is unbearable or doesn't improve."
+    },
+    {
+        "query": "i have very bad period pain",
+        "response": "Oh no, that sounds really rough.  Period pain can be absolutely debilitating.  First, let's try some things to ease the discomfort right now.  Try lying down with a heating pad or hot water bottle on your lower abdomen.  Gentle stretches might help too \u2013  think gentle back stretches or lying on your side with your knees pulled up to your chest.  Over-the-counter pain relievers like ibuprofen or naproxen can also help, but be sure to follow the directions on the packaging.  Drink plenty of water and try to relax as much as possible.  If the pain is truly severe or doesn't improve with these measures, you should seek further assistance as soon as you can.",
+        "summary": "The response offers advice for managing severe period pain, suggesting immediate relief measures such as heat application, gentle stretches, and over-the-counter pain relievers.  It emphasizes staying hydrated and relaxed, but also advises seeking further medical assistance if the pain is unmanageable or persists despite these home remedies."
+    },
+    {
+        "query": "I am feeling busy",
+        "response": "Oh, honey, feeling busy isn't really something I can treat as a first aider.  We deal with cuts, bruises, that sort of thing.  Feeling busy is more of a life thing, you know?  \n\nIs there something else going on that's making you feel overwhelmed?  Perhaps you're feeling unusually tired, or have a headache?  If you're feeling really run down or anything beyond just feeling busy, it's best to rest and take it easy for a bit.  If it doesn't improve,  you should make sure to get some rest and address it.",
+        "summary": "The response gently explains that feeling busy isn't a medical emergency, but rather a life circumstance.  It suggests exploring underlying causes like fatigue or headaches, recommending rest and professional help if the feeling of being overwhelmed persists or is accompanied by other symptoms."
+    },
+    {
+        "query": "I am feeling very hungry",
+        "response": "Oh, honey, feeling really hungry, huh?  That's understandable.  Try to get something easy down, like some crackers or a banana \u2013 something that won't upset your stomach.  If it continues to be a problem or if you feel weak or dizzy with the hunger,  it's best to get that checked out soon.  Plenty of fluids are a good idea too.  Let's see if something simple settles things.",
+        "summary": "The response empathizes with the user's hunger, suggesting easily digestible foods like crackers or a banana to alleviate it.  However, it cautions that persistent hunger accompanied by weakness or dizziness warrants medical attention, also recommending plenty of fluids."
+    },
+    {
+        "query": "im feeling very hungry",
+        "response": "Oh dear, feeling really hungry, huh?  That's understandable.  Have you tried having something to eat? Even a small snack like some crackers or fruit might help.  If the hunger is intense or accompanied by other symptoms like dizziness or weakness, you should get something more substantial in you as soon as possible.  Keep an eye on how you feel after eating something.",
+        "summary": "The response empathizes with the user's hunger, suggesting they eat something, even a small snack, to alleviate it.  If the hunger is severe or accompanied by other symptoms, a more significant meal is recommended, and the user is advised to monitor their condition afterward."
+    },
+    {
+        "query": "i have very bad period pain",
+        "response": "Oh no, that sounds awful.  Period pain can be really debilitating.  \n\nRight now, try to find a comfortable position \u2013 maybe lying down with a heating pad or hot water bottle on your lower abdomen.  Over-the-counter pain relievers like ibuprofen or naproxen can help, but be sure to follow the dosage instructions on the packaging.  A warm bath might also provide some relief.  \n\nDrink plenty of fluids to stay hydrated, and try to relax as much as possible. If the pain is truly unbearable or doesn't improve with these measures, you should seek help immediately.",
+        "summary": "The response offers advice for managing severe period pain:  rest comfortably with heat applied to the lower abdomen, take over-the-counter pain relievers like ibuprofen or naproxen as directed, take a warm bath, and stay hydrated.  If the pain is unbearable or doesn't improve, immediate medical attention is advised."
+    },
+    {
+        "query": "i m feeling very nauseous",
+        "response": "Oh no, feeling nauseous is awful.  Let's see if we can get you feeling a little better. First, try to find a comfortable place to sit or lie down.  Avoid strong smells \u2013 things like perfumes or cleaning products can make it worse.  Small sips of clear fluids, like water or clear broth, might help, but don't force yourself if it makes you feel worse.  If you start vomiting, try to take slow, shallow breaths to avoid getting too lightheaded.  And  if this nausea is severe, or if it continues for a while, or you develop other symptoms, it's really important to get checked out soon.",
+        "summary": "Feeling nauseous is unpleasant; the response suggests finding a comfortable position, avoiding strong smells, and sipping clear fluids.  If vomiting occurs, slow breathing is advised.  However, persistent or severe nausea warrants immediate medical attention."
+    },
+    {
+        "query": "i broke my arm bone",
+        "response": "Oh no, that sounds really painful!  Let's get you comfortable first.  Try to keep your arm completely still \u2013  don't move it around at all.  If you have anything handy like a towel, a pillow, or even a jacket,  gently use it to create a sling to support your arm.  Try to keep it elevated above your heart, if possible.  The main thing is to prevent any further movement.   This will help minimize the pain and swelling.  You should seek immediate medical attention for this.  Let's get you seen by a doctor as quickly as possible.",
+        "summary": "The response offers immediate first aid for a broken arm: immobilize the arm using available materials like towels to create a sling, keeping it elevated above the heart to minimize pain and swelling, and then seek immediate medical attention."
+    },
+    {
+        "query": "I am feeling dizzy",
+        "response": "Oh dear, feeling dizzy isn't fun.  Let's get you comfortable.  First, sit down somewhere safe, preferably with your head between your knees if you can manage it. That can often help.  Take some slow, deep breaths.  Try to stay still for a few minutes and see if it improves.  If the dizziness is severe, or if it doesn't get better, or if you experience any other symptoms like chest pain, difficulty breathing, or numbness, then you should seek immediate medical attention.  Drinking some water might also help, but avoid anything caffeinated or alcoholic right now.  Just focus on resting and let's see how you feel in a little while.",
+        "summary": "The response advises someone experiencing dizziness to sit down, rest with their head between their knees if possible, and take slow, deep breaths.  If the dizziness is severe, persistent, or accompanied by other symptoms like chest pain or difficulty breathing, immediate medical attention is recommended.  Otherwise, rest and drinking water (avoiding caffeine and alcohol) are suggested."
+    },
+    {
+        "query": "i am feeling dizzy",
+        "response": "Oh dear, feeling dizzy isn't fun.  First things first, let's get you somewhere safe to sit down.  Try to avoid standing up quickly, okay?  Make sure you're in a well-ventilated area, maybe get some fresh air if you can manage it.  Drink some water \u2013 dehydration can sometimes cause dizziness.  How long have you been feeling like this?  If it continues or gets worse, or if you experience any other symptoms like nausea, chest pain, or difficulty breathing,  you should seek immediate medical attention.  In the meantime, just try to stay calm and rest.",
+        "summary": "Feeling dizzy?  Find a safe place to sit down, avoid sudden movements, get fresh air and drink water.  If dizziness persists, worsens, or is accompanied by other symptoms like nausea or chest pain, seek immediate medical attention.  Otherwise, rest and stay calm."
+    },
+    {
+        "query": "i broke my arm",
+        "response": "Oh my goodness, I'm so sorry that happened!  Let's get you comfortable.  First, try to keep your arm completely still.  Don't try to move it or straighten it at all.  If you have anything handy \u2013 a pillow, a jacket, a towel \u2013  use it to gently support your arm and immobilize it as best you can.  Try to keep it elevated above your heart if possible.  This will help with swelling.  \n\nThe pain is likely quite bad, so take some deep breaths and try to relax as much as you can.  \n\nIt sounds like you really need to get this seen to as soon as possible.",
+        "summary": "The response offers immediate first aid for a broken arm: keep the arm still and immobilized using available materials, elevate it above the heart to reduce swelling, and breathe deeply to manage pain.  It stresses the urgent need for professional medical attention."
+    },
+    {
+        "query": "I am feeling nauseous and i can't taste food",
+        "response": "Oh no, that doesn't sound good.  Nausea and a loss of taste can be caused by a few things.  \n\nRight now, the most important thing is to try and stay hydrated. Sip on some water or clear broth slowly.  Avoid anything greasy or strongly flavored, as that might make the nausea worse.  Try to rest in a comfortable position.  If the nausea is severe or doesn't improve, or if you develop other symptoms like vomiting, dizziness, or a fever, it\u2019s really important to seek attention from a healthcare professional as soon as you can.",
+        "summary": "Nausea and loss of taste require staying hydrated with water or clear broth, avoiding rich foods, and resting.  If symptoms worsen or other symptoms like vomiting, dizziness, or fever appear, immediate medical attention is necessary."
+    },
+    {
+        "query": "i can't stand up im tired",
+        "response": "Oh dear, that doesn't sound good.  Let's get you comfortable first.  Can you tell me a little more about it?  How long have you been feeling this way? Is there any pain anywhere?  Try to sit down somewhere safe and take some slow, deep breaths.  If you can, put your feet up.  It\u2019s important to stay hydrated, so try sipping some water.  If you feel any worsening of symptoms, or if you can\u2019t seem to catch your breath,  it\u2019s best to seek help immediately.",
+        "summary": "The response offers comfort and practical advice to someone too tired to stand, suggesting they sit down, relax, and hydrate.  It emphasizes seeking immediate medical help if symptoms worsen or breathing becomes difficult."
+    },
+    {
+        "query": "i am feeling nauseous",
+        "response": "Oh no, feeling nauseous is never fun.  First things first, let's try to get you comfortable.  Find somewhere to sit or lie down \u2013 somewhere cool and quiet if possible.  Try to avoid strong smells or anything that might make it worse.  \n\nSmall sips of clear fluids like water or ginger ale might help, but don't force yourself if you can't keep anything down.  If you start vomiting, try to take slow, shallow breaths to help you feel less panicked.  \n\nIf this nausea is severe, lasts a long time, or you're experiencing other symptoms like a high fever, dizziness, or severe stomach pain, you should seek assistance promptly.   Let's focus on getting you feeling a little better for now. Is there anything else I can help with right now?",
+        "summary": "The response offers comfort and advice for nausea, suggesting rest in a cool, quiet place, avoiding strong smells, and sipping clear fluids if tolerated.  It emphasizes seeking immediate medical help if the nausea is severe, prolonged, or accompanied by other symptoms like fever, dizziness, or intense stomach pain."
+    },
+    {
+        "query": "596",
+        "response": "Okay, so what seems to be the problem?  Tell me what's going on.",
+        "summary": "Text too short to summarize."
+    },
+    {
+        "query": "I am feeling dizzy",
+        "response": "Oh dear, feeling dizzy isn't pleasant.  Let's get you comfortable.  First, sit down somewhere safe, preferably with your head between your knees.  Take slow, deep breaths.  Try to avoid sudden movements.  Drink some water if you can, sip it slowly.  If the dizziness is severe or doesn't improve soon, or if you experience any other symptoms like nausea, vomiting, or chest pain, it's really important to get checked out right away.",
+        "summary": "Feeling dizzy? Sit down, put your head between your knees, breathe deeply, and drink water slowly.  If the dizziness is severe, persistent, or accompanied by other symptoms like nausea or chest pain, seek immediate medical attention."
+    },
+    {
+        "query": "ab headache",
+        "response": "Oh, a headache, huh?  That's really unpleasant.  Try to find a quiet, dark room to rest in.  Maybe lie down and put a cold compress or an ice pack wrapped in a towel on your forehead.  Staying hydrated is important, so sip some water slowly.  See if that helps ease the pain a little. If the headache is severe, or if it's accompanied by other symptoms like dizziness, vomiting, or weakness, you need to get some help immediately.  In that case, you should seek further help as soon as you can.",
+        "summary": "The response suggests remedies for a headache, recommending rest in a dark room with a cold compress and staying hydrated.  However, it emphasizes seeking immediate medical attention if the headache is severe or accompanied by symptoms like dizziness, vomiting, or weakness."
+    },
+    {
+        "query": "i have a headache",
+        "response": "Oh dear, a headache, huh?  That's no fun.  Try to find a quiet, dark room to rest in for a bit.  Maybe put a cool cloth on your forehead.  Drink some water \u2013 dehydration can sometimes trigger headaches.  See if that helps ease it a little. If the pain is really severe, or if it gets worse, or if you have other symptoms like dizziness or stiff neck, you should really seek help right away.",
+        "summary": "The response suggests home remedies for a headache, such as resting in a quiet, dark room with a cool compress and drinking water.  However, it emphasizes seeking immediate medical attention if the headache is severe, worsens, or is accompanied by other symptoms like dizziness or neck stiffness."
+    },
+    {
+        "query": "I have headache",
+        "response": "\"Oh dear, a headache.  That's never fun.  Try to find a quiet, dark place to rest for a bit.  Maybe lie down and put a cool cloth on your forehead.  Drinking some water might help too.  If the pain is really severe, or if it's accompanied by anything else like dizziness, vomiting, or vision changes, you should seek attention for that right away.  Let's get you comfortable for now.\"",
+        "summary": "The response offers home remedies for a headache\u2014rest in a quiet, dark place, a cool compress, and water\u2014but advises seeking immediate medical attention if the pain is severe or accompanied by other symptoms like dizziness, vomiting, or vision changes."
+    },
+    {
+        "query": "I feel my left arm eating",
+        "response": "Oh my goodness, that sounds awful!  \"Eating\" pain... that's really concerning.  Try to stay calm.  \n\nFirst, let's try to get you comfortable.  Try to gently support your arm, avoiding any movement that increases the pain.  If you have any ice packs available, applying one to the area might help to reduce any swelling or inflammation.  But don't apply it directly to your skin \u2013 wrap it in a thin cloth first.\n\nI need you to take deep, slow breaths to help you relax.  It's important to stay as still and calm as possible.  This kind of pain needs to be checked out by a professional as soon as you can.  We need to figure out what's causing this.",
+        "summary": "Severe, described as \"eating,\" left arm pain requires immediate medical attention.  Until professional help arrives, the patient should rest the arm, apply a cold compress (wrapped in cloth), and practice deep breathing to remain calm.\n"
+    },
+    {
+        "query": "left arm is paining",
+        "response": "Oh, that sounds unpleasant.  Where exactly in your left arm is the pain?  Is it sharp, dull, aching, or something else?  Can you describe it to me?  And is there anything that makes it better or worse, like movement or pressure?  Try to keep your arm still for now, and let's see if we can get you a little more comfortable.  If the pain is severe, or if you notice any numbness, tingling, or swelling, it's best to get that checked out as soon as possible.",
+        "summary": "Left arm pain reported.  Needs location, description (sharp, dull, etc.), aggravating/relieving factors assessment.  Seek immediate medical attention if severe, numbness, tingling, or swelling present.\n"
+    },
+    {
+        "query": "I have an headache",
+        "response": "Oh no, a headache?  That's never fun.  Try to find a quiet, dark place to rest for a little while.  Maybe lie down and put a cool, damp cloth on your forehead.  See if drinking some water helps too.  If the pain is really severe, or if it's accompanied by anything else like nausea, vomiting, dizziness, or a stiff neck, you should seek attention from a medical professional as soon as you can.  Otherwise, let's see how you feel in about an hour.  If it's not improving, or gets worse, definitely take steps to get help.",
+        "summary": "Headache treatment: Rest in a quiet, dark place with a cool compress.  Drink water.  Seek immediate medical attention if pain is severe or accompanied by nausea, vomiting, dizziness, or stiff neck.  Otherwise, reassess in an hour; worsening pain requires medical help.\n"
+    },
+    {
+        "query": "this is not",
+        "response": "Okay, I understand you're not feeling well.  Can you tell me a little more about what's going on?  The more information you give me, the better I can advise you on what to do right now to help yourself feel more comfortable.",
+        "summary": "Patient reported feeling unwell; physician requested further details for appropriate advice.\n"
     }
 ]

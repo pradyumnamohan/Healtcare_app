@@ -1,61 +1,321 @@
-from flask import Blueprint, request, redirect, url_for, render_template, flash
-from datetime import datetime
-from models import User, db, bcrypt  # Import from central models file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Healthcare</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manuale:wght@700&display=swap');
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #d5ecfc;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #002147;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1002;
+        }
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .emergency-btn {
+            background-color: yellow;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .dots-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 10px;
+            position: relative;
+            z-index: 1002;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 80vh;
+            padding-top: 40px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Manuale', serif;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 20px;
+            width: 60%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+        .mic-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .send-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .emergency-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            width: 300px;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .more-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            animation: slideIn 0.3s ease-in-out;
+            padding-top: 80px;
+        }
+        .more-menu button {
+            display: block;
+            width: 100%;
+            padding: 20px 25px;
+            border: none;
+            background: none;
+            font-size: 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #002147;
+        }
+        .more-menu button:hover {
+            background-color: #f0f0f0;
+        }
+        .response-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            display: none;
+        }
+        .response-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #002147;
+            font-size: 18px;
+        }
+        .response-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .summary-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            color: #002147;
+            font-size: 16px;
+        }
+        .summary-content {
+            font-style: italic;
+            color: #555;
+        }
+        .loading {
+            display: none;
+            margin: 20px auto;
+        }
+        .loading:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid #002147;
+            border-color: #002147 transparent #002147 transparent;
+            animation: loading 1.2s linear infinite;
+        }
+        @keyframes loading {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="left-section">
+            <div class="logo">L</div>
+            <button class="emergency-btn">Emergency</button>
+        </div>
+        <img src="{{ url_for('static', filename='more.png') }}" class="dots-icon" alt="Menu">
+    </div>
+    <div class="container">
+        <h1>Healthcare App</h1>
+        <div class="input-box">
+            <input type="text" id="symptomInput" placeholder="Enter your symptoms" />
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic" id="micButton">
+            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983788.png" class="send-icon" alt="Send" id="sendBtn">
+        </div>
+        <div class="loading" id="loadingIndicator"></div>
+        <div class="response-container" id="responseContainer">
+            <div class="response-title">First Aid Advice:</div>
+            <div class="response-content" id="responseContent"></div>
+            <div class="summary-title">Summary:</div>
+            <div class="summary-content" id="summaryContent"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const micButton = document.getElementById("micButton");
+            const symptomInput = document.getElementById("symptomInput");
+            const responseContainer = document.getElementById("responseContainer");
+            const responseText = document.getElementById("responseContent");
+            const summaryText = document.getElementById("summaryContent");
+            const sendButton = document.getElementById("sendBtn");
+            const loadingIndicator = document.getElementById("loadingIndicator");
 
-signup_bp = Blueprint('signup_bp', __name__)
+            if (!("webkitSpeechRecognition" in window)) {
+                alert("Speech recognition is not supported in this browser.");
+            } else {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
 
-# Signup Page Route (GET)
-@signup_bp.route('/signup', methods=['GET'])
-def signup():
-    return render_template('signup.html')
+                micButton.addEventListener("click", function () {
+                    recognition.start();
+                    symptomInput.placeholder = "Listening...";
+                });
 
-# Signup Form Submission (POST)
-@signup_bp.route('/signup', methods=['POST'])
-def signup_post():
-    email = request.form.get('email')
-    password = request.form.get('password')
-    name = request.form.get('name')
-    age = request.form.get('age')
-    gender = request.form.get('gender')
-    blood_group = request.form.get('blood_group')
-    date_of_birth = request.form.get('date_of_birth')
-    primary_guardian = request.form.get('primary_guardian')
-    primary_guardian_contact = request.form.get('primary_guardian_contact')
-    family_doctor = request.form.get('family_doctor')
-    family_doctor_contact = request.form.get('family_doctor_contact')
+                recognition.onresult = function (event) {
+                    const speechResult = event.results[0][0].transcript;
+                    symptomInput.value = speechResult;
+                    processQuery(speechResult);
+                };
 
-    # Check if email is already registered
-    existing_user = User.query.filter_by(email=email).first()
-    if existing_user:
-        flash('Error: Email already registered. Please use another email.', 'danger')
-        return redirect(url_for('signup_bp.signup'))
+                recognition.onerror = function () {
+                    symptomInput.placeholder = "Try again...";
+                };
 
-    # Hash the password
-    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+                recognition.onend = function () {
+                    symptomInput.placeholder = "Enter your symptoms";
+                };
+            }
 
-    # Create new user
-    new_user = User(
-        email=email,
-        password=hashed_password,
-        name=name,
-        age=int(age),
-        gender=gender,
-        blood_group=blood_group,
-        date_of_birth=datetime.strptime(date_of_birth, '%Y-%m-%d'),
-        primary_guardian=primary_guardian,
-        primary_guardian_contact=primary_guardian_contact,
-        family_doctor=family_doctor,
-        family_doctor_contact=family_doctor_contact
-    )
+            sendButton.addEventListener("click", function () {
+                processQuery(symptomInput.value.trim());
+            });
 
-    # Save to database
-    try:
-        db.session.add(new_user)
-        db.session.commit()
-        flash('Registration successful! You can now log in.', 'success')
-        return redirect(url_for('login_bp.login'))  # Updated URL pattern
-    except Exception as e:
-        db.session.rollback()
-        flash('Error: Registration failed. Please try again.', 'danger')
-        print(str(e))  # Log error for debugging
-        return redirect(url_for('signup_bp.signup'))
+            symptomInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    processQuery(symptomInput.value.trim());
+                }
+            });
+
+            function processQuery(query) {
+                if (!query) {
+                    alert("Please enter your symptoms or question");
+                    return;
+                }
+
+                loadingIndicator.style.display = "block";
+                responseContainer.style.display = "none";
+
+                fetch('/process_query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: query })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    loadingIndicator.style.display = "none";
+                    responseText.textContent = data.response;
+                    summaryText.textContent = data.summary;
+                    responseContainer.style.display = "block";
+                    responseContainer.scrollIntoView({ behavior: "smooth" });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loadingIndicator.style.display = "none";
+                    alert("An error occurred while processing your request.");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

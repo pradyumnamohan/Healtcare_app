@@ -11,6 +11,10 @@ import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import os
+from PIL import Image
+import pytesseract
+import PyPDF2
+import io
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:BookClub123@localhost/HealthCareApp'
@@ -90,15 +94,11 @@ def summarize_content(text, model):
         return "Text too short to summarize."
     
     try:
-        summary_prompt = f"Summarize this text briefly in one paragraph:\n{text[:4000]}"
+        summary_prompt = f"Summarize the following medical text concisely:\n\n{text[:4000]}"
         response = model.generate_content(summary_prompt)
-        
-        if hasattr(response, 'text') and response.text:
-            return response.text.strip()
-        else:
-            return "Unable to generate summary."
+        return response.text if hasattr(response, 'text') else "Unable to generate summary."
     except Exception as e:
-        print(f"Error generating summary: {e}")
+        print(f"Error in summarization: {e}")
         return "Summary generation failed."
 
 def process_medical_query(user_query, model, medical_context=""):
@@ -157,315 +157,48 @@ def upload_file():
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        return jsonify({
-            'success': True,
-            'message': 'File uploaded successfully',
-            'filename': filename
-        })
+
+        try:
+            extracted_text = ""
+            if filename.lower().endswith('.pdf'):
+                with open(filepath, 'rb') as pdf_file:
+                    pdf_reader = PyPDF2.PdfReader(pdf_file)
+                    for page in pdf_reader.pages:
+                        text = page.extract_text()
+                        if text:
+                            extracted_text += text + "\n"
+            else:
+                image = Image.open(filepath)
+                extracted_text = pytesseract.image_to_string(image)
+
+            if not extracted_text.strip():
+                return jsonify({
+                    'success': False,
+                    'message': 'No text could be extracted from the file'
+                })
+
+            summary = summarize_content(extracted_text, model)
+            
+            return jsonify({
+                'success': True,
+                'message': 'File processed successfully',
+                'filename': filename,
+                'summary': summary,
+                'extracted_text': extracted_text[:1000]  # First 1000 chars for preview
+            })
+
+        except Exception as e:
+            print(f"Error processing file: {e}")
+            return jsonify({
+                'success': False,
+                'message': f'Error processing file: {str(e)}'
+            })
     
     return jsonify({'success': False, 'message': 'Only PDF and JPEG files are allowed'})
 
 @app.route('/')
 def index():
-    return f'''
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Emergency Healthcare</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Manuale:wght@700&display=swap');
-            body {{
-                margin: 0;
-                font-family: Arial, sans-serif;
-                background-color: #d5ecfc;
-                text-align: center;
-            }}
-            .navbar {{
-                background-color: #002147;
-                padding: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                z-index: 1002;
-            }}
-            .left-section {{
-                display: flex;
-                align-items: center;
-            }}
-            .logo {{
-                width: 40px;
-                height: 40px;
-                background-color: yellow;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                margin-left: 10px;
-            }}
-            .emergency-btn {{
-                background-color: yellow;
-                border: none;
-                padding: 10px 20px;
-                font-size: 18px;
-                font-weight: bold;
-                border-radius: 20px;
-                cursor: pointer;
-                margin-left: 20px;
-            }}
-            .dots-icon {{
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-                color: white;
-                margin-right: 10px;
-                position: relative;
-                z-index: 1002;
-            }}
-            .container {{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                height: 80vh;
-            }}
-            .title {{
-                font-size: 32px;
-                font-weight: bold;
-                font-family: 'Manuale', serif;
-                margin-bottom: 20px;
-            }}
-            .input-box {{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: white;
-                padding: 10px;
-                border-radius: 20px;
-                width: 60%;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            }}
-            .input-box input {{
-                border: none;
-                outline: none;
-                flex-grow: 1;
-                padding: 10px;
-                font-size: 16px;
-                border-radius: 20px;
-            }}
-            .mic-icon {{
-                width: 24px;
-                height: 24px;
-                cursor: pointer;
-            }}
-            .overlay {{
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-            }}
-            .emergency-menu {{
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-                text-align: left;
-                width: 300px;
-                z-index: 1001;
-                animation: fadeIn 0.3s ease-in-out;
-            }}
-            .more-menu {{
-                display: none;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 500px;
-                height: 100%;
-                background: white;
-                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-                z-index: 1001;
-                animation: slideIn 0.3s ease-in-out;
-                padding-top: 80px;
-            }}
-            .more-menu button {{
-                display: block;
-                width: 100%;
-                padding: 20px 25px;
-                border: none;
-                background: none;
-                font-size: 18px;
-                text-align: left;
-                cursor: pointer;
-                transition: background-color 0.3s;
-                color: #002147;
-            }}
-            .more-menu button:hover {{
-                background-color: #f0f0f0;
-            }}
-            .response-container {{
-                margin-top: 20px;
-                background-color: white;
-                padding: 20px;
-                border-radius: 10px;
-                width: 60%;
-                text-align: left;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                display: none;
-                max-height: 300px;
-                overflow-y: auto;
-            }}
-            @keyframes fadeIn {{
-                from {{ opacity: 0; }}
-                to {{ opacity: 1; }}
-            }}
-            @keyframes slideIn {{
-                from {{ transform: translateX(100%); }}
-                to {{ transform: translateX(0); }}
-            }}
-        </style>
-    </head>
-    <body>
-        <div class="navbar">
-            <div class="left-section">
-                <div class="logo">L</div>
-                <button class="emergency-btn">Emergency</button>
-            </div>
-            <img src="{url_for('static', filename='more.png')}" class="dots-icon" alt="Menu">
-        </div>
-        <div class="container">
-            <div class="title">Healthcare App</div>
-            <div class="input-box">
-                <input type="text" id="symptomInput" placeholder="Enter your symptoms" />
-                <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic">
-            </div>
-            <div class="response-container" id="responseContainer">
-                <div id="responseText"></div>
-            </div>
-        </div>
-        
-        <div class="overlay" id="overlay"></div>
-        <div class="emergency-menu" id="emergencyMenu">
-            <h2>Emergency Services</h2>
-            <p><span>Press 1</span> for Ambulance 🚑🚑</p>
-            <p><span>Press 2</span> for Fire Department 🚒🚒</p>
-            <p><span>Press 3</span> for Police 🚓🚓</p>
-        </div>
-        
-        <div class="more-menu" id="moreMenu">
-            <button onclick="window.location.href='/'">Main Menu</button>
-            <button onclick="window.location.href='/login'">Log In</button>
-            <button onclick="window.location.href='/signup'">Sign Up</button>
-        </div>
-
-        <script>
-            document.querySelector('.dots-icon').addEventListener('click', function() {{
-                const moreMenu = document.getElementById('moreMenu');
-                const overlay = document.getElementById('overlay');
-                if (moreMenu.style.display === 'block') {{
-                    moreMenu.style.display = 'none';
-                    overlay.style.display = 'none';
-                }} else {{
-                    moreMenu.style.display = 'block';
-                    overlay.style.display = 'block';
-                }}
-            }});
-
-            document.getElementById('overlay').addEventListener('click', function() {{
-                const moreMenu = document.getElementById('moreMenu');
-                const emergencyMenu = document.getElementById('emergencyMenu');
-                moreMenu.style.display = 'none';
-                emergencyMenu.style.display = 'none';
-                this.style.display = 'none';
-            }});
-
-            document.querySelector('.emergency-btn').addEventListener('click', function() {{
-                const emergencyMenu = document.getElementById('emergencyMenu');
-                const overlay = document.getElementById('overlay');
-                emergencyMenu.style.display = 'block';
-                overlay.style.display = 'block';
-            }});
-
-            document.addEventListener("keydown", function(event) {{
-                const emergencyMenu = document.getElementById("emergencyMenu");
-                const overlay = document.getElementById("overlay");
-                const moreMenu = document.getElementById("moreMenu");
-                
-                if (event.key === "Escape") {{
-                    if (emergencyMenu.style.display === "block") {{
-                        emergencyMenu.style.display = "none";
-                        overlay.style.display = "none";
-                    }} else if (moreMenu.style.display === "block") {{
-                        moreMenu.style.display = "none";
-                        overlay.style.display = "none";
-                    }} else {{
-                        emergencyMenu.style.display = "block";
-                        overlay.style.display = "block";
-                    }}
-                }} else if (emergencyMenu.style.display === "block") {{
-                    if (event.key === "1") {{
-                        alert("Calling Ambulance...🚑🚑");
-                        window.location.href = "/emergency/ambulance";
-                    }} else if (event.key === "2") {{
-                        alert("Calling Fire Department...🚒🚒");
-                        window.location.href = "/emergency/fire";
-                    }} else if (event.key === "3") {{
-                        alert("Calling Police...🚓🚓");
-                        window.location.href = "/emergency/police";
-                    }}
-                }}
-            }});
-
-            // Process symptom input when user presses Enter
-            document.getElementById('symptomInput').addEventListener('keydown', function(event) {{
-                if (event.key === 'Enter') {{
-                    const query = this.value.trim();
-                    if (query) {{
-                        processQuery(query);
-                    }}
-                }}
-            }});
-
-            // Function to process the query
-            function processQuery(query) {{
-                // Show loading state
-                const responseContainer = document.getElementById('responseContainer');
-                const responseText = document.getElementById('responseText');
-                responseContainer.style.display = 'block';
-                responseText.textContent = 'Processing your query...';
-
-                // Send the query to the server
-                fetch('/process_query', {{
-                    method: 'POST',
-                    headers: {{
-                        'Content-Type': 'application/json',
-                    }},
-                    body: JSON.stringify({{ query: query }})
-                }})
-                .then(response => response.json())
-                .then(data => {{
-                    responseText.textContent = data.response;
-                }})
-                .catch(error => {{
-                    responseText.textContent = 'Error processing your query. Please try again.';
-                    console.error('Error:', error);
-                }});
-            }}
-        </script>
-    </body>
-    </html>
-    '''
+    return render_template('index.html')
 
 @app.route('/process_query', methods=['POST'])
 def process_query():
@@ -486,6 +219,18 @@ def process_query():
 @app.route('/emergency/<service>')
 def emergency_redirect(service):
     return f"<h1>Redirecting to {service.capitalize()}...</h1>"
+
+@app.route('/speech-to-text', methods=['POST'])
+def speech_to_text():
+    data = request.json
+    spoken_text = data.get('spoken_text', '')
+    
+    if not spoken_text:
+        return jsonify({'response': 'No speech detected.'})
+    
+    response = process_medical_query(spoken_text, model)
+    return jsonify({'response': response})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

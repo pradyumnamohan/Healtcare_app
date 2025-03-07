@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e7c0de547b62c8464e00660ce0549e24 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e7c0de547b62c8464e00660ce0549e24" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e7c0de547b62c8464e00660ce0549e24 = L.map(
+                "map_e7c0de547b62c8464e00660ce0549e24",
+                {
+                    center: [12.9753, 77.591],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c75be1448edccc4abdd54e7c975b07bf = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c75be1448edccc4abdd54e7c975b07bf.addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var marker_d3b55894774e9d50949f6f36bf3ee208 = L.marker(
+                [12.9753, 77.591],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_4cb33847a2cd065a678ed33982346cab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_354e9879bc59cfdcfb482731ef1e97ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15ad96035c30e89075a67546cab12a9e = $(`<div id="html_15ad96035c30e89075a67546cab12a9e" style="width: 100.0%; height: 100.0%;">Your Location</div>`)[0];
+                popup_354e9879bc59cfdcfb482731ef1e97ce.setContent(html_15ad96035c30e89075a67546cab12a9e);
+            
+        
+
+        marker_d3b55894774e9d50949f6f36bf3ee208.bindPopup(popup_354e9879bc59cfdcfb482731ef1e97ce)
+        ;
+
+        
+    
+    
+                marker_d3b55894774e9d50949f6f36bf3ee208.setIcon(icon_4cb33847a2cd065a678ed33982346cab);
+            
+    
+            var marker_6fe808cdc1497230c56cbd5e3828c485 = L.marker(
+                [12.9744571, 77.5847663],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_86a20b21639ed39509b1b040e571ef47 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1bb702472a2073eb21f0b59bd75ba2b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a4996d0f4ef124f63ac0592969e4307 = $(`<div id="html_2a4996d0f4ef124f63ac0592969e4307" style="width: 100.0%; height: 100.0%;">         <b>Emergency Exit</b><br>         Type: <br>         Distance: 0.68 km<br>         Emergency: Yes<br>         Phone: Not available<br>         Address: Not available<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9744571,77.5847663" target="_blank">Directions</a>         </div>`)[0];
+                popup_e1bb702472a2073eb21f0b59bd75ba2b.setContent(html_2a4996d0f4ef124f63ac0592969e4307);
+            
+        
+
+        marker_6fe808cdc1497230c56cbd5e3828c485.bindPopup(popup_e1bb702472a2073eb21f0b59bd75ba2b)
+        ;
+
+        
+    
+    
+                marker_6fe808cdc1497230c56cbd5e3828c485.setIcon(icon_86a20b21639ed39509b1b040e571ef47);
+            
+    
+            var marker_7c49369bf452a9f41ff88c260c1eb68c = L.marker(
+                [12.9708175, 77.5857431],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_a5bf952f7ddee9c90ff8013b98f31580 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3f4d28de175e5d96be455a880b34069 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_872dfd324b5c7a6d5f49899b081f9d52 = $(`<div id="html_872dfd324b5c7a6d5f49899b081f9d52" style="width: 100.0%; height: 100.0%;">         <b>St Marthas Hospital</b><br>         Type: Hospital<br>         Distance: 0.76 km<br>         Emergency: Yes<br>         Phone: Not available<br>         Address: Office No-05, Nrupathunga Road<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9708175,77.5857431" target="_blank">Directions</a>         </div>`)[0];
+                popup_a3f4d28de175e5d96be455a880b34069.setContent(html_872dfd324b5c7a6d5f49899b081f9d52);
+            
+        
+
+        marker_7c49369bf452a9f41ff88c260c1eb68c.bindPopup(popup_a3f4d28de175e5d96be455a880b34069)
+        ;
+
+        
+    
+    
+                marker_7c49369bf452a9f41ff88c260c1eb68c.setIcon(icon_a5bf952f7ddee9c90ff8013b98f31580);
+            
+    
+            var marker_4058d601d8caac4c22d1125eb42a84f3 = L.marker(
+                [12.968031, 77.5878222],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_905346c464b2c32116febf93d41bd7a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2aa23171b82f90023894b2136e5a2984 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffd95bedf1d20a09ecbf76ad772cb0e6 = $(`<div id="html_ffd95bedf1d20a09ecbf76ad772cb0e6" style="width: 100.0%; height: 100.0%;">         <b>Dr. Rajkumar Blood Bank</b><br>         Type: Hospital<br>         Distance: 0.87 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: Not available<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.968031,77.5878222" target="_blank">Directions</a>         </div>`)[0];
+                popup_2aa23171b82f90023894b2136e5a2984.setContent(html_ffd95bedf1d20a09ecbf76ad772cb0e6);
+            
+        
+
+        marker_4058d601d8caac4c22d1125eb42a84f3.bindPopup(popup_2aa23171b82f90023894b2136e5a2984)
+        ;
+
+        
+    
+    
+                marker_4058d601d8caac4c22d1125eb42a84f3.setIcon(icon_905346c464b2c32116febf93d41bd7a2);
+            
+    
+            var marker_03a932cf4710b5b775c71462fb620d17 = L.marker(
+                [12.9681553, 77.5950421],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_27cbddddaf392b8fa11c711df152ceb3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_86fe9f9337fa0acb25101c7dc5f6247e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d8261540c70996956aa31177b05818c3 = $(`<div id="html_d8261540c70996956aa31177b05818c3" style="width: 100.0%; height: 100.0%;">         <b>Vydehi Superspeciality Hospital</b><br>         Type: Hospital<br>         Distance: 0.9 km<br>         Emergency: No<br>         Phone: +9180 2227 7979<br>         Address: No.2 Vittal Mallya Road<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9681553,77.5950421" target="_blank">Directions</a>         </div>`)[0];
+                popup_86fe9f9337fa0acb25101c7dc5f6247e.setContent(html_d8261540c70996956aa31177b05818c3);
+            
+        
+
+        marker_03a932cf4710b5b775c71462fb620d17.bindPopup(popup_86fe9f9337fa0acb25101c7dc5f6247e)
+        ;
+
+        
+    
+    
+                marker_03a932cf4710b5b775c71462fb620d17.setIcon(icon_27cbddddaf392b8fa11c711df152ceb3);
+            
+    
+            var marker_4839e23593cc378b6f922fdf4be43b28 = L.marker(
+                [12.9670615, 77.5903161],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_801cea02ede16d327e0ca31f9d7940e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9738fe9dacf11da712bb44f47e568a9b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5c3b0165b9fc844a8df9cc52d1fa2af1 = $(`<div id="html_5c3b0165b9fc844a8df9cc52d1fa2af1" style="width: 100.0%; height: 100.0%;">         <b>Bhavatprabhu Hospitals Pvt Limited</b><br>         Type: Hospital<br>         Distance: 0.91 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: No.2 , 8Th A Main,S.R.Nagar,Near Corporation Offices<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9670615,77.5903161" target="_blank">Directions</a>         </div>`)[0];
+                popup_9738fe9dacf11da712bb44f47e568a9b.setContent(html_5c3b0165b9fc844a8df9cc52d1fa2af1);
+            
+        
+
+        marker_4839e23593cc378b6f922fdf4be43b28.bindPopup(popup_9738fe9dacf11da712bb44f47e568a9b)
+        ;
+
+        
+    
+    
+                marker_4839e23593cc378b6f922fdf4be43b28.setIcon(icon_801cea02ede16d327e0ca31f9d7940e6);
+            
+    
+            var marker_359ecb7aeb09fbc8dfc19ef753070b09 = L.marker(
+                [12.9670215, 77.5892667],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_148bb7a46731bceb5366aa4d21128e4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ba9cec2fad8d5605c51de90bf60e57d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b62bf49c54fba163019d781dafad5254 = $(`<div id="html_b62bf49c54fba163019d781dafad5254" style="width: 100.0%; height: 100.0%;">         <b>Bangalore Kidney Stones Hospital</b><br>         Type: Hospital<br>         Distance: 0.93 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: 10, Vokkaligara Bhavana, Hudson Circle<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9670215,77.5892667" target="_blank">Directions</a>         </div>`)[0];
+                popup_5ba9cec2fad8d5605c51de90bf60e57d.setContent(html_b62bf49c54fba163019d781dafad5254);
+            
+        
+
+        marker_359ecb7aeb09fbc8dfc19ef753070b09.bindPopup(popup_5ba9cec2fad8d5605c51de90bf60e57d)
+        ;
+
+        
+    
+    
+                marker_359ecb7aeb09fbc8dfc19ef753070b09.setIcon(icon_148bb7a46731bceb5366aa4d21128e4b);
+            
+    
+            var marker_09f3ed61432d82f8cdc770140e5a981c = L.marker(
+                [12.966674, 77.591952],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_2b08b8e96bf3ed251b2d7ce776f4de27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_de76da74ba612b7a582d050874d5a30c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e2e702dc8dcad98fd59e116f91747891 = $(`<div id="html_e2e702dc8dcad98fd59e116f91747891" style="width: 100.0%; height: 100.0%;">         <b>Malika Clinic</b><br>         Type: Clinic<br>         Distance: 0.96 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: Ashwath Nagar, Sampangi Rama Nagara<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.966674,77.591952" target="_blank">Directions</a>         </div>`)[0];
+                popup_de76da74ba612b7a582d050874d5a30c.setContent(html_e2e702dc8dcad98fd59e116f91747891);
+            
+        
+
+        marker_09f3ed61432d82f8cdc770140e5a981c.bindPopup(popup_de76da74ba612b7a582d050874d5a30c)
+        ;
+
+        
+    
+    
+                marker_09f3ed61432d82f8cdc770140e5a981c.setIcon(icon_2b08b8e96bf3ed251b2d7ce776f4de27);
+            
+    
+            var marker_eefefcd3ff897ce82b698ab5b9dc16cd = L.marker(
+                [12.9705436, 77.5834769],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_5b68a40a54e1b24b16e612c323db5468 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27dff1d05fa15d341aef1b523e3c9365 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a50cf3c864d00f5e6b92a641f2d0784 = $(`<div id="html_2a50cf3c864d00f5e6b92a641f2d0784" style="width: 100.0%; height: 100.0%;">         <b>St. Martha's Heart Centre</b><br>         Type: Hospital<br>         Distance: 0.97 km<br>         Emergency: No<br>         Phone: +9195380 43453<br>         Address: Nrupathunga Rd, RBI Colony, Sampangi Rama Nagar 5<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9705436,77.5834769" target="_blank">Directions</a>         </div>`)[0];
+                popup_27dff1d05fa15d341aef1b523e3c9365.setContent(html_2a50cf3c864d00f5e6b92a641f2d0784);
+            
+        
+
+        marker_eefefcd3ff897ce82b698ab5b9dc16cd.bindPopup(popup_27dff1d05fa15d341aef1b523e3c9365)
+        ;
+
+        
+    
+    
+                marker_eefefcd3ff897ce82b698ab5b9dc16cd.setIcon(icon_5b68a40a54e1b24b16e612c323db5468);
+            
+    
+            var marker_35c3364824750689f683c0096d538f72 = L.marker(
+                [12.983283, 77.594772],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_a04048b9afa55c9fa35d305ba9705de5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31ac81f52883a05e95875c4016413ab6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d07220073d2a01703d8769fae786cd26 = $(`<div id="html_d07220073d2a01703d8769fae786cd26" style="width: 100.0%; height: 100.0%;">         <b>Sparsh Hospital For Advanced Surgeries, Bengaluru Urban</b><br>         Type: Hospital<br>         Distance: 0.97 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: # 146, Infantry Road, Prestige Opal Building, Opp Police Commissioners Office<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.983283,77.594772" target="_blank">Directions</a>         </div>`)[0];
+                popup_31ac81f52883a05e95875c4016413ab6.setContent(html_d07220073d2a01703d8769fae786cd26);
+            
+        
+
+        marker_35c3364824750689f683c0096d538f72.bindPopup(popup_31ac81f52883a05e95875c4016413ab6)
+        ;
+
+        
+    
+    
+                marker_35c3364824750689f683c0096d538f72.setIcon(icon_a04048b9afa55c9fa35d305ba9705de5);
+            
+    
+            var marker_26843f42f3339cdcabca0c83ceb5dda3 = L.marker(
+                [12.9685305, 77.5843965],
+                {
+}
+            ).addTo(map_e7c0de547b62c8464e00660ce0549e24);
+        
+    
+            var icon_6f9a5ab34fb6d1c30c5ed4a945d692d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_670ec81496a9d7b2f3c33080e05daa23 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a30aa9a225b89817614ceb129f19d533 = $(`<div id="html_a30aa9a225b89817614ceb129f19d533" style="width: 100.0%; height: 100.0%;">         <b>Punarjyoti Eye Hospital, Bengaluru Urban</b><br>         Type: Hospital<br>         Distance: 1.04 km<br>         Emergency: No<br>         Phone: Not available<br>         Address: No 37, Next To Ganesha Temple Near Cubbonpet Market Near Cubbonpet Market<br>         <a href="https://www.google.com/maps/dir/12.9753,77.591/12.9685305,77.5843965" target="_blank">Directions</a>         </div>`)[0];
+                popup_670ec81496a9d7b2f3c33080e05daa23.setContent(html_a30aa9a225b89817614ceb129f19d533);
+            
+        
+
+        marker_26843f42f3339cdcabca0c83ceb5dda3.bindPopup(popup_670ec81496a9d7b2f3c33080e05daa23)
+        ;
+
+        
+    
+    
+                marker_26843f42f3339cdcabca0c83ceb5dda3.setIcon(icon_6f9a5ab34fb6d1c30c5ed4a945d692d5);
+            
+</script>
+</html>
