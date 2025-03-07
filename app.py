@@ -5,6 +5,8 @@ import google.generativeai as genai
 import os
 import json
 import time
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 app.register_blueprint(login_bp)
@@ -18,6 +20,18 @@ GEMINI_API_KEY = "AIzaSyDD6Snf1FKw-ovCFmcnEVnylntDpKgR5Ns"  # Replace with your 
 # Configure Gemini API
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
+
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'jpeg'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+
+# Create upload folder if it doesn't exist
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def save_chat(query, response, summary=""):
     """Save chat to JSON file with query, response, and summary fields."""
@@ -99,6 +113,27 @@ Please provide a helpful first aid response:"""
     fallback_summary = "Failed conversation about a medical issue."
     save_chat(user_query, fallback_response, fallback_summary)
     return fallback_response, fallback_summary
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return jsonify({'success': False, 'message': 'No file part'})
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'success': False, 'message': 'No selected file'})
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        return jsonify({
+            'success': True,
+            'message': 'File uploaded successfully',
+            'filename': filename
+        })
+    
+    return jsonify({'success': False, 'message': 'Only PDF and JPEG files are allowed'})
 
 @app.route('/')
 def index():
@@ -261,6 +296,33 @@ def index():
                 max-height: 300px;
                 overflow-y: auto;
             }}
+            .attachment-icon {{
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                margin: 0 10px;
+                opacity: 0.6;
+                transition: opacity 0.3s;
+            }}
+            .attachment-icon:hover {{
+                opacity: 1;
+            }}
+            .attachment-icon img {{
+                width: 100%;
+                height: 100%;
+            }}
+            .file-name {{
+                position: absolute;
+                bottom: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 12px;
+                color: #002147;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+            }}
             @keyframes fadeIn {{
                 from {{ opacity: 0; }}
                 to {{ opacity: 1; }}
@@ -283,6 +345,10 @@ def index():
             <div class="title">Healthcare App</div>
             <div class="input-box">
                 <input type="text" id="symptomInput" placeholder="Enter your symptoms" />
+                <label for="fileInput" class="attachment-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524388.png" alt="Attach">
+                </label>
+                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg" style="display: none;">
                 <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic">
             </div>
             <div class="response-container" id="responseContainer">
@@ -397,6 +463,46 @@ def index():
                     console.error('Error:', error);
                 }});
             }}
+
+            // File upload handling
+            document.getElementById('fileInput').addEventListener('change', function(e) {{
+                const file = e.target.files[0];
+                if (file) {{
+                    if (!['application/pdf', 'image/jpeg', 'image/jpg'].includes(file.type)) {{
+                        alert('Please upload only PDF or JPEG files');
+                        return;
+                    }}
+                    
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    
+                    // Remove existing file name display if any
+                    const existingFileName = document.querySelector('.file-name');
+                    if (existingFileName) {{
+                        existingFileName.remove();
+                    }}
+                    
+                    fetch('/upload', {{
+                        method: 'POST',
+                        body: formData
+                    }})
+                    .then(response => response.json())
+                    .then(data => {{
+                        if (data.success) {{
+                            const fileName = document.createElement('div');
+                            fileName.className = 'file-name';
+                            fileName.textContent = file.name;
+                            document.querySelector('.input-box').appendChild(fileName);
+                        }} else {{
+                            alert('Error uploading file: ' + data.message);
+                        }}
+                    }})
+                    .catch(error => {{
+                        console.error('Error:', error);
+                        alert('Error uploading file');
+                    }});
+                }}
+            }});
         </script>
     </body>
     </html>
