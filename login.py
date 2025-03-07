@@ -18,7 +18,8 @@ def login_post():
     user = User.query.filter_by(email=email).first()
     
     if user and bcrypt.check_password_hash(user.password, password):
-        session['user_id'] = user.userid  # Store user ID in session
+        # session['userid'] = user.id
+        session['email'] = user.email  # or user.name
         flash('Login successful!', 'success')
         return redirect(url_for('index'))
     else:
