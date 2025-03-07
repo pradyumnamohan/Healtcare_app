@@ -220,18 +220,16 @@
             <div class="logo">L</div>
             <button class="emergency-btn">Emergency</button>
         </div>
-        <img src="{{ url_for('static', filename='more.png') }}" class="dots-icon" alt="Menu" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3206/3206294.png'">
+        <img src="{{ url_for('static', filename='more.png') }}" class="dots-icon" alt="Menu">
     </div>
     <div class="container">
-        <div class="title">Healthcare App</div>
+        <h1>Healthcare App</h1>
         <div class="input-box">
             <input type="text" id="symptomInput" placeholder="Enter your symptoms" />
-            <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic">
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709682.png" class="mic-icon" alt="Mic" id="micButton">
             <img src="https://cdn-icons-png.flaticon.com/512/2983/2983788.png" class="send-icon" alt="Send" id="sendBtn">
         </div>
-        
         <div class="loading" id="loadingIndicator"></div>
-        
         <div class="response-container" id="responseContainer">
             <div class="response-title">First Aid Advice:</div>
             <div class="response-content" id="responseContent"></div>
@@ -239,129 +237,83 @@
             <div class="summary-content" id="summaryContent"></div>
         </div>
     </div>
-    
-    <div class="overlay" id="overlay"></div>
-    <div class="emergency-menu" id="emergencyMenu">
-        <h2>Emergency Services</h2>
-        <p><span>Press 1</span> for Ambulance 🚑🚑</p>
-        <p><span>Press 2</span> for Fire Department 🚒🚒</p>
-        <p><span>Press 3</span> for Police 🚓🚓</p>
-    </div>
-    
-    <div class="more-menu" id="moreMenu">
-        <button onclick="window.location.href='/'">Main Menu</button>
-        <button onclick="window.location.href='/auth/login'">Log In</button>
-        <button onclick="window.location.href='/auth/signup'">Sign Up</button>
-    </div>
-
     <script>
-        document.querySelector('.dots-icon').addEventListener('click', function() {
-            const moreMenu = document.getElementById('moreMenu');
-            const overlay = document.getElementById('overlay');
-            if (moreMenu.style.display === 'block') {
-                moreMenu.style.display = 'none';
-                overlay.style.display = 'none';
+        document.addEventListener("DOMContentLoaded", function () {
+            const micButton = document.getElementById("micButton");
+            const symptomInput = document.getElementById("symptomInput");
+            const responseContainer = document.getElementById("responseContainer");
+            const responseText = document.getElementById("responseContent");
+            const summaryText = document.getElementById("summaryContent");
+            const sendButton = document.getElementById("sendBtn");
+            const loadingIndicator = document.getElementById("loadingIndicator");
+
+            if (!("webkitSpeechRecognition" in window)) {
+                alert("Speech recognition is not supported in this browser.");
             } else {
-                moreMenu.style.display = 'block';
-                overlay.style.display = 'block';
-            }
-        });
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
 
-        document.getElementById('overlay').addEventListener('click', function() {
-            const moreMenu = document.getElementById('moreMenu');
-            const emergencyMenu = document.getElementById('emergencyMenu');
-            moreMenu.style.display = 'none';
-            emergencyMenu.style.display = 'none';
-            this.style.display = 'none';
-        });
-
-        document.querySelector('.emergency-btn').addEventListener('click', function() {
-            const emergencyMenu = document.getElementById('emergencyMenu');
-            const overlay = document.getElementById('overlay');
-            emergencyMenu.style.display = 'block';
-            overlay.style.display = 'block';
-        });
-
-        // Send query to backend
-        function sendQuery() {
-            const queryText = document.getElementById('symptomInput').value.trim();
-            
-            if (!queryText) {
-                alert("Please enter your symptoms or question");
-                return;
-            }
-            
-            // Show loading indicator
-            document.getElementById('loadingIndicator').style.display = 'block';
-            document.getElementById('responseContainer').style.display = 'none';
-            
-            fetch('/api/query', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    query: queryText
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Hide loading indicator
-                document.getElementById('loadingIndicator').style.display = 'none';
-                
-                // Show response
-                document.getElementById('responseContent').textContent = data.response;
-                document.getElementById('summaryContent').textContent = data.summary;
-                document.getElementById('responseContainer').style.display = 'block';
-                
-                // Scroll to the response
-                document.getElementById('responseContainer').scrollIntoView({
-                    behavior: 'smooth'
+                micButton.addEventListener("click", function () {
+                    recognition.start();
+                    symptomInput.placeholder = "Listening...";
                 });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('loadingIndicator').style.display = 'none';
-                alert('An error occurred while processing your request.');
-            });
-        }
-        
-        // Event listeners for sending query
-        document.getElementById('sendBtn').addEventListener('click', sendQuery);
-        
-        document.getElementById('symptomInput').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                sendQuery();
-            }
-        });
 
-        document.addEventListener("keydown", function(event) {
-            const emergencyMenu = document.getElementById("emergencyMenu");
-            const overlay = document.getElementById("overlay");
-            const moreMenu = document.getElementById("moreMenu");
-            
-            if (event.key === "Escape") {
-                if (emergencyMenu.style.display === "block") {
-                    emergencyMenu.style.display = "none";
-                    overlay.style.display = "none";
-                } else if (moreMenu.style.display === "block") {
-                    moreMenu.style.display = "none";
-                    overlay.style.display = "none";
-                } else {
-                    emergencyMenu.style.display = "block";
-                    overlay.style.display = "block";
+                recognition.onresult = function (event) {
+                    const speechResult = event.results[0][0].transcript;
+                    symptomInput.value = speechResult;
+                    processQuery(speechResult);
+                };
+
+                recognition.onerror = function () {
+                    symptomInput.placeholder = "Try again...";
+                };
+
+                recognition.onend = function () {
+                    symptomInput.placeholder = "Enter your symptoms";
+                };
+            }
+
+            sendButton.addEventListener("click", function () {
+                processQuery(symptomInput.value.trim());
+            });
+
+            symptomInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    processQuery(symptomInput.value.trim());
                 }
-            } else if (emergencyMenu.style.display === "block") {
-                if (event.key === "1") {
-                    alert("Calling Ambulance...🚑🚑");
-                    window.location.href = "/emergency/ambulance";
-                } else if (event.key === "2") {
-                    alert("Calling Fire Department...🚒🚒");
-                    window.location.href = "/emergency/fire";
-                } else if (event.key === "3") {
-                    alert("Calling Police...🚓🚓");
-                    window.location.href = "/emergency/police";
+            });
+
+            function processQuery(query) {
+                if (!query) {
+                    alert("Please enter your symptoms or question");
+                    return;
                 }
+
+                loadingIndicator.style.display = "block";
+                responseContainer.style.display = "none";
+
+                fetch('/process_query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: query })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    loadingIndicator.style.display = "none";
+                    responseText.textContent = data.response;
+                    summaryText.textContent = data.summary;
+                    responseContainer.style.display = "block";
+                    responseContainer.scrollIntoView({ behavior: "smooth" });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loadingIndicator.style.display = "none";
+                    alert("An error occurred while processing your request.");
+                });
             }
         });
     </script>
