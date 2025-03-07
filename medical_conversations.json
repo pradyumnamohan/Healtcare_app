@@ -3,5 +3,25 @@
         "query": "i'm feeling dzzy",
         "response": "Oh dear, feeling dizzy can be really unsettling.  Let's get you comfortable. First, sit down somewhere safe and still, preferably with your head between your knees if that's comfortable.  Take some slow, deep breaths.  Drink some water if you can.  \n\nDoes anything make the dizziness worse or better?  Is it accompanied by any other symptoms like nausea, vomiting, chest pain, or difficulty breathing?  \n\nIf the dizziness is severe or doesn't improve at all, or if you have any of those other symptoms, you really need to seek attention promptly.  It's important to get that checked out as soon as you can.",
         "summary": "Feeling dizzy is addressed by advising the person to sit down, rest with their head between their knees if possible, breathe deeply, and drink water.  The response also emphasizes seeking immediate medical attention if the dizziness is severe, doesn't improve, or is accompanied by other symptoms like nausea, vomiting, chest pain, or difficulty breathing."
+    },
+    {
+        "query": "my left are swollen what to do",
+        "response": "Oh no, a swollen left arm.  That doesn't sound good.  First things first, let's try to keep it elevated.  Try to keep your arm above your heart as much as possible.  This might help reduce the swelling a bit.  Also,  avoid any activity that might make it worse.  Try to keep it still and gently cool it with a cold compress, like a bag of ice wrapped in a towel, for about 15-20 minutes at a time,  then take a break.  Repeat this as needed.  If the swelling is severe, or if you're experiencing any pain, numbness, or tingling, you really should seek attention immediately.  Let's get that checked out as soon as possible.",
+        "summary": "A swollen left arm should be elevated above the heart and kept still.  Apply cold compresses for 15-20 minutes at a time, but seek immediate medical attention if the swelling is severe or accompanied by pain, numbness, or tingling."
+    },
+    {
+        "query": "my legs are swollen what to do",
+        "response": "Oh no, swollen legs aren't fun.  First things first, let's try to get them elevated.  Try to find a comfortable position where your legs are raised above your heart \u2013 maybe propped up on some pillows.  Keep them elevated for a while, maybe half an hour or so.  \n\nAlso, try to avoid standing or walking around too much for now.  Loose clothing will also help.  Keep an eye on it and see if the swelling goes down. If it doesn't improve, or gets worse, or you notice any other symptoms like pain, redness, or warmth in the area, it\u2019s best to seek advice as soon as possible to get it checked out.",
+        "summary": "For swollen legs, elevate them above your heart for about 30 minutes, rest, and wear loose clothing.  If the swelling doesn't reduce, worsens, or is accompanied by pain, redness, or warmth, seek immediate medical attention."
+    },
+    {
+        "query": "i am dizzy",
+        "response": "I'm sorry, I couldn't generate a response at the moment.",
+        "summary": "Failed conversation about a medical issue."
+    },
+    {
+        "query": "I am feeling dizzy",
+        "response": "Oh dear, feeling dizzy isn't pleasant.  First things first, let's get you somewhere safe to sit down.  Try to avoid sudden movements.  Do you feel nauseous at all?  Are you sweating?  It might help to take slow, deep breaths.  Let's get you some water to sip slowly.  If the dizziness is severe, or if it lasts for a while, or if you experience any other symptoms like chest pain, difficulty breathing, or numbness,  you really should seek attention right away.  But for now, rest and take it easy.  Let me know if anything changes.",
+        "summary": "The response offers immediate care for dizziness, advising rest, slow breathing, and hydration.  It emphasizes seeking immediate medical attention if dizziness is severe, prolonged, or accompanied by other symptoms like nausea, chest pain, or breathing difficulties, but otherwise suggests calming measures and monitoring the situation."
     }
 ]
