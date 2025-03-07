@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.register_blueprint(login_bp)
 app.register_blueprint(signup_bp)
 
-# Constants
+# Constant
 FILE_PATH = "medical_conversations.json"
 PERMANENT_PROMPT = """You are a first aid provider and not a doctor. you need to just advise the patient on what to do in the moment. It is known that the person will consult a doctor anyway but dont mention it explicitly. However if its serious, mention to meet the doctor as soon as possible. The conversation should be human like. Dont make it sound like the person is talking to a robot. Also do not deviate from the topic."""
 GEMINI_API_KEY = "AIzaSyDD6Snf1FKw-ovCFmcnEVnylntDpKgR5Ns"  # Replace with your Gemini API key
