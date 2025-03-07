@@ -23,5 +23,35 @@
         "query": "I am feeling dizzy",
         "response": "Oh dear, feeling dizzy isn't pleasant.  First things first, let's get you somewhere safe to sit down.  Try to avoid sudden movements.  Do you feel nauseous at all?  Are you sweating?  It might help to take slow, deep breaths.  Let's get you some water to sip slowly.  If the dizziness is severe, or if it lasts for a while, or if you experience any other symptoms like chest pain, difficulty breathing, or numbness,  you really should seek attention right away.  But for now, rest and take it easy.  Let me know if anything changes.",
         "summary": "The response offers immediate care for dizziness, advising rest, slow breathing, and hydration.  It emphasizes seeking immediate medical attention if dizziness is severe, prolonged, or accompanied by other symptoms like nausea, chest pain, or breathing difficulties, but otherwise suggests calming measures and monitoring the situation."
+    },
+    {
+        "query": "I am feeling little dizzy",
+        "response": "Oh dear, feeling dizzy isn't fun.  Let's see if we can get you feeling a bit better. First, find a place to sit or lie down \u2013 somewhere safe and comfortable.  Try to keep your head still and avoid any sudden movements.  Take some slow, deep breaths.  Is there anything that might be contributing to this, like low blood sugar?  Have you eaten recently? If not, try having something sweet like juice or a biscuit if you have some available. If the dizziness is severe or doesn't improve quickly, or if you feel nauseous or have any other symptoms, you should seek further help immediately.",
+        "summary": "Feeling dizzy?  The response suggests finding a safe place to sit or lie down, remaining still, and taking deep breaths.  Checking blood sugar levels and eating something sweet if needed are also recommended.  However, for severe or persistent dizziness, or accompanying symptoms like nausea, immediate medical attention is advised."
+    },
+    {
+        "query": "why is my tooth eating",
+        "response": "Oh my goodness, that sounds awful!  \"Tooth eating\" isn't a phrase I'm familiar with, but it sounds like you're having some serious pain and discomfort.  \n\nFirst, rinse your mouth gently with warm salt water.  This might help to soothe the area.  Try to avoid touching the affected tooth too much.  If you have any over-the-counter pain relievers like ibuprofen, you can take those according to the package directions to help manage the pain.  \n\nHowever, given how concerning this sounds,  it's really important to see someone about this as soon as you can.  They'll be able to figure out what's going on and give you the right advice and treatment.",
+        "summary": "The response to the query \"why is my tooth eating\" acknowledges the severe pain described and suggests immediate self-care measures like rinsing with warm salt water and taking over-the-counter pain relief.  However, it strongly emphasizes the need for urgent professional dental attention to diagnose and treat the underlying problem."
+    },
+    {
+        "query": "why is my tooth taking taking taking",
+        "response": "Oh my goodness, that sounds awful!  A toothache like that can be really debilitating.  First things first, try rinsing your mouth gently with warm salt water.  That might help to clean out any debris and ease some of the pain.  You can also try applying a cold compress to your cheek on the outside, near the affected tooth.  That can help numb the area a little.  \n\nIf the pain is severe, or if it doesn't improve at all after trying those things,  you should seek professional help as soon as you can.  I hope you feel better soon!",
+        "summary": "The response suggests home remedies for a severe toothache, such as warm salt water rinses and cold compresses, but strongly advises seeking professional dental help if the pain persists or worsens."
+    },
+    {
+        "query": "can I eat spicy food when I have",
+        "response": "Okay, so you're wondering about spicy food and...  what's the rest of your question?  What's going on?  Do you have a stomach ache?  Heartburn?  Something else?  Knowing what you're dealing with will help me give you the best advice.",
+        "summary": "The response seeks clarification on a question about eating spicy food, requesting more information about the user's health concerns (e.g., stomach ache, heartburn) before providing relevant advice."
+    },
+    {
+        "query": "can I eat spicy food when I have fever",
+        "response": "\"Oh, that's a tough one.  When you've got a fever, your body's already working hard to fight off whatever's causing it. Spicy food can sometimes irritate your stomach and digestive system, which might make you feel even worse \u2013 nausea, upset stomach, you know the drill.  It's probably best to stick to bland, easily digestible foods right now, like broth, toast, or plain rice.  Think things that are gentle on your system. If your fever is high or you're feeling really unwell, it's a good idea to get that checked out sooner rather than later.\"",
+        "summary": "Eating spicy food with a fever is generally discouraged as it can irritate the stomach and worsen symptoms like nausea.  Bland, easily digestible foods are recommended instead, and seeking medical attention is advised if the fever is high or symptoms are severe."
+    },
+    {
+        "query": "I have severe throat pain",
+        "response": "Oh, that sounds really awful.  Severe throat pain can be pretty miserable.  First things first, try to stay hydrated.  Sipping on warm liquids like tea with honey (if you can tolerate it) or broth might help soothe it a bit.  Avoid anything acidic or too hot, as that will likely irritate it further.  Rest your voice as much as possible \u2013 no shouting or whispering.  If the pain is truly severe, or if you have difficulty breathing or swallowing, you should seek attention immediately.",
+        "summary": "Severe throat pain can be treated with rest, hydration (warm liquids like tea with honey), and avoiding irritants.  However, if the pain is intense or accompanied by breathing or swallowing difficulties, immediate medical attention is necessary."
     }
 ]
